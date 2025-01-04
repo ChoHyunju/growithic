@@ -1,0 +1,38 @@
+/* src/styles/QuickTipSection.css */
+
+.quick-tip {
+    background-color: #f0f8ff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+  
+  .tip-container {
+    text-align: center;
+  }
+  
+  .tip-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .tip-content {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tip-cta {
+    background-color: #007aff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .tip-cta:hover {
+    background-color: #005bb5;
+  }
+  
