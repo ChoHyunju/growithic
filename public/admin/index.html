@@ -3,29 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Growithic CMS</title>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://identity.netlify.com https://unpkg.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; media-src 'self' data: blob:;">
   <script async src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script async src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://identity.netlify.com https://unpkg.com; script-src 'self' 'unsafe-inline' https://identity.netlify.com https://unpkg.com; style-src 'self' 'unsafe-inline';">
 </head>
 <body>
   <div id="cms"></div>
 
   <script>
-    // DOMContentLoaded 이벤트를 사용하여 초기화
     document.addEventListener('DOMContentLoaded', () => {
-      // CMS가 로드되었는지 확인
       const initCMS = () => {
         if (window.CMS) {
           CMS.init();
         } else {
-          // CMS가 아직 로드되지 않았다면 재시도
           setTimeout(initCMS, 100);
         }
       };
 
       initCMS();
 
-      // Netlify Identity 초기화
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", user => {
           if (!user) {
@@ -37,7 +33,6 @@
       }
     });
 
-    // 로드 완료 확인
     window.addEventListener("load", () => {
       if (!document.getElementById("cms")) {
         console.error("CMS container not found!");

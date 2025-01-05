@@ -1,19 +1,91 @@
 backend:
   name: git-gateway
-  branch: main # GitHub 기본 브랜치 이름
+  branch: main
+  commit_messages:
+    create: '{{collection}}: 새로운 "{{slug}}" 생성'
+    update: '{{collection}}: "{{slug}}" 업데이트'
+    delete: '{{collection}}: "{{slug}}" 삭제'
+    uploadMedia: '[미디어] "{{path}}" 업로드'
+    deleteMedia: '[미디어] "{{path}}" 삭제'
 
-media_folder: "public/assets" # 업로드된 파일 저장 경로
-public_folder: "/assets"
+# 미디어 파일 설정
+media_folder: "public/assets/uploads"
+public_folder: "/assets/uploads"
+
+# 로컬 개발 환경 설정
+local_backend: true
+
+# 언어 설정
+locale: 'ko'
 
 collections:
-  - name: "homepage"
-    label: "Homepage"
+  - name: "pages"
+    label: "페이지"
     files:
-      - file: "src/data/homepage.json"
-        label: "Hero Section"
-        name: "hero"
+      - label: "홈페이지"
+        name: "home"
+        file: "src/data/home.json"
         fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Subtitle", name: "subtitle", widget: "string" }
-          - { label: "CTA Button 1", name: "cta_button_1", widget: "string" }
-          - { label: "CTA Button 2", name: "cta_button_2", widget: "string" }
+          - { label: "메인 제목", name: "title", widget: "string", required: true }
+          - { label: "부제목", name: "subtitle", widget: "string", required: true }
+          - { 
+              label: "히어로 이미지", 
+              name: "heroImage", 
+              widget: "image",
+              required: true,
+              media_folder: "/assets/uploads"
+            }
+          - label: "CTA 버튼"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "주 버튼 텍스트", name: "primary", widget: "string", required: true }
+              - { label: "보조 버튼 텍스트", name: "secondary", widget: "string", required: true }
+
+  - name: "quicktips"
+    label: "오늘의 꿀팁"
+    folder: "src/data/quicktips"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "제목", name: "title", widget: "string", required: true }
+      - { 
+          label: "내용", 
+          name: "content", 
+          widget: "markdown", 
+          required: true,
+          minimal: true
+        }
+      - { 
+          label: "작성일", 
+          name: "date", 
+          widget: "datetime",
+          format: "YYYY-MM-DD HH:mm:ss",
+          required: true
+        }
+      - { label: "링크", name: "link", widget: "string", required: true }
+
+  - name: "projects"
+    label: "프로젝트"
+    folder: "src/data/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "제목", name: "title", widget: "string", required: true }
+      - { label: "설명", name: "description", widget: "text", required: true }
+      - { 
+          label: "썸네일", 
+          name: "thumbnail", 
+          widget: "image",
+          required: true,
+          media_folder: "/assets/uploads"
+        }
+      - { 
+          label: "좋아요", 
+          name: "likes", 
+          widget: "number", 
+          default: 0,
+          min: 0,
+          required: true
+        }
+      - { label: "링크", name: "link", widget: "string", required: true }

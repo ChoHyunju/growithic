@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/QuickTipSection.css';
+import { validateSchema } from '../utils/schemaValidator';
 
 const QuickTipSection = () => {
   const defaultTipData = {
@@ -13,13 +14,14 @@ const QuickTipSection = () => {
 
   useEffect(() => {
     fetch('/data/quicktip.json')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Failed to fetch tip data');
+      .then(response => response.json())
+      .then(data => {
+        if (validateSchema(data, 'quicktip')) {
+          setTipData(data);
+        } else {
+          setTipData(defaultTipData);
         }
-        return response.json();
       })
-      .then(data => setTipData(data))
       .catch(error => {
         console.error('Error loading tip data:', error);
         setTipData(defaultTipData);
