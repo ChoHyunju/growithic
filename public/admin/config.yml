@@ -1,8 +1,8 @@
 backend:
   name: git-gateway
-  branch: main # GitHub 기본 브랜치
+  branch: main
 
-media_folder: "public/assets" # 업로드된 미디어 파일 경로
+media_folder: "public/assets" # 업로드된 파일 경로
 public_folder: "/assets"
 
 collections:
