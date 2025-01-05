@@ -1,12 +1,18 @@
 backend:
   name: git-gateway
   branch: main
+  auth_scope: repo  # GitHub 저장소 접근 권한
   commit_messages:
     create: '{{collection}}: 새로운 "{{slug}}" 생성'
     update: '{{collection}}: "{{slug}}" 업데이트'
     delete: '{{collection}}: "{{slug}}" 삭제'
     uploadMedia: '[미디어] "{{path}}" 업로드'
     deleteMedia: '[미디어] "{{path}}" 삭제'
+
+# Git Gateway 설정
+site_url: https://growithic.netlify.app  # 실제 사이트 URL로 변경
+display_url: https://growithic.netlify.app
+logo_url: https://growithic.netlify.app/assets/logo.png  # 로고 경로
 
 # 미디어 파일 설정
 media_folder: "public/assets/uploads"
