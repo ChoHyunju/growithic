@@ -2,34 +2,38 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+media_folder: "public/assets"
+public_folder: "/assets"
 
 collections:
-  - name: "hero"
-    label: "Hero Section"
-    folder: "content/hero"
-    create: true
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Image", name: "image", widget: "image" }
+  - name: "homepage"
+    label: "홈페이지 섹션"
+    files:
+      - file: "src/data/homepage.json"
+        label: "히어로 섹션"
+        name: "hero"
+        fields:
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "부제목", name: "subtitle", widget: "string"}
+          - {label: "CTA 버튼1", name: "ctaButton1", widget: "string"}
+          - {label: "CTA 버튼2", name: "ctaButton2", widget: "string"}
+          - {label: "히어로 이미지", name: "heroImage", widget: "image"}
 
-  - name: "quicktip"
-    label: "Quick Tips"
-    folder: "content/quicktips"
-    create: true
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Content", name: "content", widget: "markdown" }
-      - { label: "Date", name: "date", widget: "datetime" }
+      - file: "src/data/quicktip.json"
+        label: "오늘의 꿀팁"
+        name: "quicktip"
+        fields:
+          - {label: "제목", name: "title", widget: "string"}
+          - {label: "내용", name: "content", widget: "text"}
+          - {label: "링크", name: "link", widget: "string"}
 
-  - name: "popularprojects"
-    label: "Popular Projects"
-    folder: "content/projects"
+  - name: "portfolio"
+    label: "포트폴리오"
+    folder: "src/data/portfolio"
     create: true
+    slug: "{{slug}}"
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Link", name: "link", widget: "string" } 
+      - {label: "제목", name: "title", widget: "string"}
+      - {label: "설명", name: "description", widget: "text"}
+      - {label: "썸네일", name: "thumbnail", widget: "image"}
+      - {label: "좋아요", name: "likes", widget: "number", default: 0} 
