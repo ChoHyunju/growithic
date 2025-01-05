@@ -1,0 +1,26 @@
+[
+  {
+    "title": "LLM 기반 챗봇",
+    "description": "AI를 활용해 고객 문의 시간을 70% 단축한 사례",
+    "image": "/assets/chatbot-project.jpg",
+    "likes": 25
+  },
+  {
+    "title": "데이터 시각화 프로젝트",
+    "description": "복잡한 데이터를 시각적으로 표현하여 의사결정 지원",
+    "image": "/assets/data-visualization.jpg",
+    "likes": 40
+  },
+  {
+    "title": "AI 포트폴리오 분석기",
+    "description": "머신러닝으로 투자 포트폴리오 최적화 구현",
+    "image": "/assets/portfolio-analyzer.jpg",
+    "likes": 35
+  },
+  {
+    "title": "실시간 협업 플랫폼",
+    "description": "WebSocket을 활용한 실시간 팀 협업 도구",
+    "image": "/assets/collaboration-platform.jpg",
+    "likes": 30
+  }
+] 
