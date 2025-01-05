@@ -1,39 +1,19 @@
 backend:
   name: git-gateway
-  branch: main
+  branch: main # GitHub 기본 브랜치
 
-media_folder: "public/assets"
+media_folder: "public/assets" # 업로드된 미디어 파일 경로
 public_folder: "/assets"
 
 collections:
   - name: "homepage"
-    label: "홈페이지 섹션"
+    label: "Homepage"
     files:
       - file: "src/data/homepage.json"
-        label: "히어로 섹션"
+        label: "Hero Section"
         name: "hero"
         fields:
-          - {label: "제목", name: "title", widget: "string"}
-          - {label: "부제목", name: "subtitle", widget: "string"}
-          - {label: "CTA 버튼1", name: "ctaButton1", widget: "string"}
-          - {label: "CTA 버튼2", name: "ctaButton2", widget: "string"}
-          - {label: "히어로 이미지", name: "heroImage", widget: "image"}
-
-      - file: "src/data/quicktip.json"
-        label: "오늘의 꿀팁"
-        name: "quicktip"
-        fields:
-          - {label: "제목", name: "title", widget: "string"}
-          - {label: "내용", name: "content", widget: "text"}
-          - {label: "링크", name: "link", widget: "string"}
-
-  - name: "portfolio"
-    label: "포트폴리오"
-    folder: "src/data/portfolio"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - {label: "제목", name: "title", widget: "string"}
-      - {label: "설명", name: "description", widget: "text"}
-      - {label: "썸네일", name: "thumbnail", widget: "image"}
-      - {label: "좋아요", name: "likes", widget: "number", default: 0} 
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subtitle", name: "subtitle", widget: "string" }
+          - { label: "CTA Button 1", name: "cta_button_1", widget: "string" }
+          - { label: "CTA Button 2", name: "cta_button_2", widget: "string" }
