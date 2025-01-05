@@ -2,6 +2,7 @@ backend:
   name: git-gateway
   branch: main
   auth_scope: repo  # GitHub 저장소 접근 권한
+  api_root: https://api.github.com  # GitHub API 엔드포인트
   commit_messages:
     create: '{{collection}}: 새로운 "{{slug}}" 생성'
     update: '{{collection}}: "{{slug}}" 업데이트'
@@ -10,9 +11,9 @@ backend:
     deleteMedia: '[미디어] "{{path}}" 삭제'
 
 # Git Gateway 설정
-site_url: https://growithic.netlify.app  # 실제 사이트 URL로 변경
+site_url: https://growithic.netlify.app
 display_url: https://growithic.netlify.app
-logo_url: https://growithic.netlify.app/assets/logo.png  # 로고 경로
+logo_url: https://growithic.netlify.app/assets/logo.png
 
 # 미디어 파일 설정
 media_folder: "public/assets/uploads"
@@ -25,52 +26,6 @@ local_backend: true
 locale: 'ko'
 
 collections:
-  - name: "pages"
-    label: "페이지"
-    files:
-      - label: "홈페이지"
-        name: "home"
-        file: "src/data/home.json"
-        fields:
-          - { label: "메인 제목", name: "title", widget: "string", required: true }
-          - { label: "부제목", name: "subtitle", widget: "string", required: true }
-          - { 
-              label: "히어로 이미지", 
-              name: "heroImage", 
-              widget: "image",
-              required: true,
-              media_folder: "/assets/uploads"
-            }
-          - label: "CTA 버튼"
-            name: "cta"
-            widget: "object"
-            fields:
-              - { label: "주 버튼 텍스트", name: "primary", widget: "string", required: true }
-              - { label: "보조 버튼 텍스트", name: "secondary", widget: "string", required: true }
-
-  - name: "quicktips"
-    label: "오늘의 꿀팁"
-    folder: "src/data/quicktips"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - { label: "제목", name: "title", widget: "string", required: true }
-      - { 
-          label: "내용", 
-          name: "content", 
-          widget: "markdown", 
-          required: true,
-          minimal: true
-        }
-      - { 
-          label: "작성일", 
-          name: "date", 
-          widget: "datetime",
-          format: "YYYY-MM-DD HH:mm:ss",
-          required: true
-        }
-      - { label: "링크", name: "link", widget: "string", required: true }
-
   - name: "projects"
     label: "프로젝트"
     folder: "src/data/projects"

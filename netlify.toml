@@ -11,3 +11,25 @@
 
 [build.environment]
   NODE_VERSION = "18.x"
+
+# Git Gateway 설정
+[template.environment]
+  NETLIFY_IDENTITY_ENABLED = "true"
+  NETLIFY_GIT_GATEWAY_ENABLED = "true"
+
+# CSP 헤더 설정
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = """
+      default-src 'self' https://identity.netlify.com https://unpkg.com; 
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://identity.netlify.com https://unpkg.com; 
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data: blob: https:;
+      media-src 'self' data: blob:;
+      connect-src 'self' https://api.netlify.com https://api.github.com https://identity.netlify.com https://unpkg.com blob:;
+      frame-src 'self' https://identity.netlify.com;
+      """
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
