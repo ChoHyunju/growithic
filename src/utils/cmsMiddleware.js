@@ -10,4 +10,4 @@ export const fetchCmsData = async (path) => {
     console.error('CMS 데이터 로드 에러:', error);
     return null;
   }
-}; 
+};
